@@ -13,7 +13,6 @@
     </mat-grid-tile>
 
     <mat-grid-tile>
-
       <div *ngIf="!uploadConcluido && myFiles && myFiles.length>0">
         <button mat-fab extended color="warn" (click)="upload()" [disabled]="loading">
           <mat-icon>cloud_upload</mat-icon>
@@ -27,11 +26,8 @@
           Limpar
         </button>
       </div>
-
     </mat-grid-tile>
-
   </mat-grid-list>
-
 
   <mat-divider></mat-divider>
 
@@ -42,21 +38,20 @@
   <div *ngIf="selectedFiles">
 
     <mat-list>
+      <mat-list-item *ngFor="let file of myFiles" >
+        <mat-icon matListItemIcon aria-hidden="true">description</mat-icon>
 
-      <mat-list-item *ngFor="let file of myFiles">
-        <mat-icon matListItemIcon color="accent">description</mat-icon>
-        <div matListItemTitle>Nome: {{file.name | json}}
-          <span [ngSwitch]="file.icone">
-            <mat-icon matListItemIcon *ngSwitchCase="'cloud_upload'">{{file.icone}}</mat-icon>
-            <mat-spinner *ngSwitchCase="'sync'" [diameter]="24"></mat-spinner>
-            <mat-icon matListItemIcon *ngSwitchCase="'done'">{{file.icone}}</mat-icon>
-            <mat-icon matListItemIcon *ngSwitchCase="'emergency_home'">{{file.icone}}</mat-icon>
-          </span>
+        <div matListItemTitle>
+          Nome: {{file.name | json}}
+          <mat-icon matListItemIcon *ngIf="['cloud_upload','done','report'].includes(file.icone)" aria-hidden="true">{{file.icone}}</mat-icon>
+          <mat-spinner *ngIf="file.icone=='sync'" [diameter]="24"></mat-spinner>
         </div>
-        <span matListItemLine>Status: {{file.status}}</span>
+        <span matListItemLine>Status: {{file.status}} </span>
 
       </mat-list-item>
     </mat-list>
+
+
   </div>
 
 </div>
