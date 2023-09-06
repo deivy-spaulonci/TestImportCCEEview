@@ -18,7 +18,7 @@ export class AgenteService {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
 
-    return this.http.post<any>(this.url+'agente', new Blob([file]), this.httpOptions)
+    return this.http.post<any>(this.url+'agente/importar', new Blob([file]), this.httpOptions)
   }
 
   private handleError<T>(result?: T) {
