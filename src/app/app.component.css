@@ -1,0 +1,16 @@
+body, html{
+    margin: 0;
+    padding: 0;
+}
+
+#fileUpload{
+    visibility: hidden;
+}
+#legend{
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.basic-container {
+    padding: 5px;
+  }
